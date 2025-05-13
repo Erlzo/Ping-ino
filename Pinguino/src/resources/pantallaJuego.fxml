@@ -160,6 +160,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+                  <ImageView fitHeight="61.0" fitWidth="302.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                     <image>
+                        <Image url="@../../../pngtree-santa-sleigh-in-isometric-view-merry-cartoon-leisure-vector-png-image_12338109.png" />
+                     </image>
+                  </ImageView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="🕳" textAlignment="CENTER" wrappingWidth="294.13671875" GridPane.columnIndex="3" GridPane.rowIndex="9">
                      <font>
                         <Font size="96.0" />
@@ -192,11 +197,6 @@
                         <Insets bottom="50.0" />
                      </GridPane.margin>
                   </Text>
-                  <ImageView fitHeight="61.0" fitWidth="302.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
-                     <image>
-                        <Image url="@../../../pngtree-santa-sleigh-in-isometric-view-merry-cartoon-leisure-vector-png-image_12338109.png" />
-                     </image>
-                  </ImageView>
                   <ImageView fitHeight="61.0" fitWidth="302.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <image>
                         <Image url="@../../../pngtree-santa-sleigh-in-isometric-view-merry-cartoon-leisure-vector-png-image_12338109.png" />

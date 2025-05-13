@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
@@ -75,52 +74,41 @@ public class pantallaPrincipalController {
 
         System.out.println("Login pressed: " + username + " / " + password);
 
+        // Basic check (just for demo, replace with real login logic)
         if (!username.isEmpty() && !password.isEmpty()) {
+           
+          /*  String url = "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2";*/
             String url = "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
             
             try {
-                // Conexión directa (como en tu versión original)
                 Connection conn = DriverManager.getConnection(url, username, password);
                 System.out.println("✅ Conexión exitosa a Oracle!");
-                
-                // Pasar a pantalla de juego (como en tu versión original)
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pantallaJuego.fxml"));
-                Parent pantallaJuegoRoot = loader.load();
-
-                // Obtener ID del jugador
-                int playerId = obtenerIdJugador(conn, username);
-                
-                // Pasar datos al controlador del juego
-                pantallaJuegoController juegoController = loader.getController();
-                juegoController.inicializarDatosJugador(playerId, conn);
-
-                Scene pantallaJuegoScene = new Scene(pantallaJuegoRoot);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(pantallaJuegoScene);
-                stage.setTitle("Pantalla de Juego");
-                stage.setFullScreen(true);
-                stage.setResizable(false);
-                
+                conn.close();
             } catch (SQLException e) {
                 System.out.println("❌ Error al conectar:");
                 e.printStackTrace();
-                mostrarAlert("Error", "Credenciales incorrectas", AlertType.ERROR);
+            }
+        	
+        	try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pantallaJuego.fxml"));
+                Parent pantallaJuegoRoot = loader.load();
+
+                Scene pantallaJuegoScene = new Scene(pantallaJuegoRoot);
+
+                // Get the current stage using the event
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(pantallaJuegoScene);
+                stage.setTitle("Pantalla de Juego");
+        	    stage.setFullScreen(true);
+        	    stage.setResizable(false);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Por favor ingrese usuario y contraseña.");
+            System.out.println("Please. Enter user and password.");
         }
     }
 
-    private int obtenerIdJugador(Connection conn, String username) throws SQLException {
-        String sql = "SELECT IDJUGADOR FROM JUGADOR WHERE NOMBRE = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, username);
-            ResultSet rs = pstmt.executeQuery();
-            return rs.next() ? rs.getInt("IDJUGADOR") : -1;
-        }
-    }
 
 @FXML
 public void handleRegister(ActionEvent event) throws SQLException {
