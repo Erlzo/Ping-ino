@@ -2,7 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="6-Conexión BBDD/Ejemplo con arrays"/>
 	<classpathentry kind="src" path="6-Conexión BBDD/Plantilla automática"/>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="resources/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>

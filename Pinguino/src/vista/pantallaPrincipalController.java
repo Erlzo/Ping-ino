@@ -77,8 +77,8 @@ public class pantallaPrincipalController {
         // Basic check (just for demo, replace with real login logic)
         if (!username.isEmpty() && !password.isEmpty()) {
            
-          /*  String url = "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2";*/
-            String url = "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
+        	String url = "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2";
+           /* String url = "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";*/
             
             try {
                 Connection conn = DriverManager.getConnection(url, username, password);
