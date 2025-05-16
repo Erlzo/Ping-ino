@@ -131,6 +131,11 @@
                               </Text>
                            </children>
                         </AnchorPane>
+                        <Button fx:id="reglas" layoutX="1012.0" layoutY="89.0" mnemonicParsing="false" onAction="#mostrarReglas" text="Reglas">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
@@ -265,11 +270,414 @@
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets top="30.0" />
+                     </GridPane.margin>
                   </Text>
                   <Circle fx:id="P1" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin></Circle>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="15.6328125">
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="15.6328125" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="15.6328125" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" wrappingWidth="15.6328125" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" wrappingWidth="15.6328125" GridPane.columnIndex="4">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" wrappingWidth="15.6328125" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" wrappingWidth="15.6328125" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" wrappingWidth="15.6328125" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="9" wrappingWidth="15.6328125" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="280.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="11" wrappingWidth="34.6328125" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="12" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="13" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="14" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="16" wrappingWidth="34.6328125" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="17" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="18" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="19" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="21" wrappingWidth="34.6328125" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="22" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="23" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="24" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="25" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="26" wrappingWidth="34.6328125" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="27" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="28" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="29" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="30" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="31" wrappingWidth="34.6328125" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="32" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="33" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="34" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="35" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="36" wrappingWidth="34.6328125" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="37" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="38" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="39" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="40" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="41" wrappingWidth="34.6328125" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="42" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="43" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="32.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="44" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="45" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="46" wrappingWidth="34.6328125" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="47" wrappingWidth="34.6328125" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="48" wrappingWidth="34.6328125" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="49" wrappingWidth="34.6328125" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="50" wrappingWidth="34.6328125" GridPane.columnIndex="4" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="35.0" left="265.0" />
+                     </GridPane.margin>
+                  </Text>
                </children>
             </GridPane>
          </center>

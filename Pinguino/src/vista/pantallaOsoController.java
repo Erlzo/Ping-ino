@@ -19,7 +19,7 @@ public class pantallaOsoController {
     @FXML
     private void usarPez() {
         
-    	
+
     	
     	decision = true;
         stage.close();
