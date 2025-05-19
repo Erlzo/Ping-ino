@@ -2,8 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="6-Conexión BBDD/Ejemplo con arrays"/>
 	<classpathentry kind="src" path="6-Conexión BBDD/Plantilla automática"/>
-	<classpathentry excluding="resources/" kind="src" path="src"/>
+	<classpathentry excluding="resources/|bin/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/resources"/>
+	<classpathentry kind="src" path="src/bin"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -14,22 +15,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/javafx-sdk-17.0.15/lib/javafx.base.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="E:/javafx-sdk-17.0.15/lib/javafx.controls.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="E:/javafx-sdk-17.0.15/lib/javafx.fxml.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="E:/javafx-sdk-17.0.15/lib/javafx.graphics.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -50,6 +36,21 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="E:/javafx-sdk-17.0.15/lib/javafx-swt.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/javafx-sdk-17.0.15/lib/javafx.base.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/javafx-sdk-17.0.15/lib/javafx.fxml.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/javafx-sdk-17.0.15/lib/javafx.graphics.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

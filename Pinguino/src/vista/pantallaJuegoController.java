@@ -191,6 +191,25 @@ public class pantallaJuegoController {
 			return false;
 		}
 	}
+	
+	@FXML
+	private void mostrarReglas(ActionEvent event) {
+	    try {
+	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pantallaReglas.fxml"));
+	        Parent root = fxmlLoader.load();
+
+	        Stage stage = new Stage();
+	        stage.setTitle("Reglas del Juego");
+	        stage.setScene(new Scene(root));
+	        stage.initModality(Modality.APPLICATION_MODAL); // Bloquea interacción con la ventana principal
+	        stage.setResizable(false);
+	        stage.showAndWait();
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+
 
 	@FXML
 	private void handleDado(ActionEvent event) {
