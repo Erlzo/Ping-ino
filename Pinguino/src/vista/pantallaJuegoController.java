@@ -1,9 +1,18 @@
 package vista;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Random;
 import java.util.Scanner;
 
+import controlador.bbdd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Inventario;
+import vista.pantallaPrincipalController;
 
 public class pantallaJuegoController {
 
@@ -69,6 +79,7 @@ public class pantallaJuegoController {
 	public int dadoLento;
 	public int pecesObt;
 	public int bolasNieve;
+	
 	public Inventario inventario; // Acceso al inventario
 
 	Scanner scanner = new Scanner(System.in);
@@ -90,16 +101,103 @@ public class pantallaJuegoController {
 	}
 
 	@FXML
-	private void handleSaveGame() {
-		System.out.println("Saved game.");
-		// TODO
+	private void handleSaveGame(ActionEvent event) {
+	    // Datos de ejemplo — deberías obtenerlos de tus variables del juego
+	    LocalDate fecha = LocalDate.now();
+	    LocalTime hora = LocalTime.now();
+	    int posiciones = p1Position;  // Ejemplo de estado de partida
+	    String estado = "";
+	    
+	    pantallaPrincipalController principal = new pantallaPrincipalController();
+	    
+	    String username = principal.getUsername();
+	    String password = principal.getPassword();
+	    
+		if (p1Position >= 50) {
+		     estado = "FINALIZADA"; // 5 columns * 10 rows = 50 cells (index 0 to 49)
+		}else {
+			estado = "EN_PROGRESO";
+		}
+
+	    // Convertimos fecha y hora al formato SQL
+	    String fechaSQL = java.sql.Date.valueOf(fecha).toString();
+	    String horaSQL = java.sql.Time.valueOf(hora).toString();
+
+	    // Creamos la sentencia SQL de inserción
+	    String sqlPartida = String.format(
+	    	    "INSERT INTO PARTIDA (IDPARTIDA, NUMPARTIDA, FECHA, HORA, POSICIONES, ESTADO) " +
+	    	    "VALUES (seq_idpartida.NEXTVAL, seq_numpartida.NEXTVAL, TO_DATE('%s', 'YYYY-MM-DD'), TO_DATE('%s', 'HH24:MI:SS'), '%s', '%s')",
+	    	     fechaSQL, horaSQL, posiciones, estado
+	    	);
+	    
+	    String sqlJugador = String.format(
+	    	    "INSERT INTO JUGADOR (IDJUGADOR, NUMPARTIDAS, NOMBRE, CONTRASEÑA) " +
+	    	    "VALUES (seq_idjugador.NEXTVAL, seq_numpartida.NEXTVAL, '%s', '%s')",
+	    	     username, password
+	    	);
+	    
+	    String sqlParticipacion = String.format(
+	    	    "INSERT INTO PARTICIPACIÓN (IDPARTICIPACIÓN, POSICIONACTUAL, NUMPECES, NUMDADOLENTO, NUMDADORAPIDO, IDJUGADOR, IDPARTIDA) " +
+	    	    "VALUES (seq_idparticipacion.NEXTVAL, '%s', '%s', '%s', '%s', seq_idjugador.NEXTVAL, seq_idpartida.NEXTVAL)",
+	    	     posiciones, inventario.getPeces(), inventario.getDadoLentos(), inventario.getDadoRapido()
+	    	);
+	    
+	    try {
+	        Connection con = bbdd.conectarBaseDatos();  // Te pedirá los datos de conexión por consola
+	        bbdd.insert(con, sqlPartida);                      // Ejecuta el insert
+	        bbdd.insert(con, sqlParticipacion);                      // Ejecuta el insert
+	        bbdd.insert(con, sqlJugador);                      // Ejecuta el insert
+	        con.close();                                // Cierra la conexión
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	@FXML
-	private void handleLoadGame() {
-		System.out.println("Loaded game.");
-		// TODO
+	private void handleLoadGame(ActionEvent event) {
+	    Scanner scanner = new Scanner(System.in);
+
+	    System.out.print("🔎 Introduce el número de partida (NUMPARTIDA) que deseas cargar: ");
+	    int numPartida = scanner.nextInt();  // Lee el número desde la consola
+
+	    String sql = "SELECT * FROM PARTIDA WHERE NUMPARTIDA = " + numPartida;
+	    try {
+	        Connection con = bbdd.conectarBaseDatos();  // Te pedirá datos por consola
+	        ResultSet rs = bbdd.select(con, sql);
+
+	        if (rs != null && rs.next()) {
+	            int idPartida = rs.getInt("IDPARTIDA");
+	            Date fecha = rs.getDate("FECHA");
+	            Time hora = rs.getTime("HORA");
+	            p1Position = rs.getInt("POSICIONES");
+	            String estado = rs.getString("ESTADO");
+
+	    		int row = p1Position / COLUMNS;
+	    		int col = p1Position % COLUMNS;
+				GridPane.setRowIndex(P1, row);
+				GridPane.setColumnIndex(P1, col);
+				
+	            // Aquí haces lo que necesites con los datos cargados
+	            System.out.println("✅ Partida cargada:");
+	            System.out.println("ID: " + idPartida);
+	            System.out.println("Núm: " + numPartida);
+	            System.out.println("Fecha: " + fecha);
+	            System.out.println("Hora: " + hora);
+	            System.out.println("Posiciones: " + p1Position);
+	            System.out.println("Estado: " + estado);
+
+	            // TODO: Actualiza tu lógica del juego con esta información
+
+	        } else {
+	            System.out.println("⚠️ No se encontró ninguna partida.");
+	        }
+
+	        con.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 
 	@FXML
 	private void handleQuitGame() {
@@ -233,11 +331,13 @@ public class pantallaJuegoController {
 			p1Position = 49; // 5 columns * 10 rows = 50 cells (index 0 to 49)
 		}
 
+		
+		
 		// Check row and column
 		// fila y columna recibidas
 		int row = p1Position / COLUMNS;
 		int col = p1Position % COLUMNS;
-
+		
 		// Variable para comprobar si alguna condición se cumplió
 		boolean accionRealizada = false;
 		boolean bucle = true;

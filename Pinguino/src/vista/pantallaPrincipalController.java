@@ -35,7 +35,26 @@ public class pantallaPrincipalController {
     @FXML private Button loginButton;
     @FXML private Button registerButton;
 
-    @FXML
+    String username;
+    String password;
+    
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@FXML
     private void initialize() {
         // This method is called automatically after the FXML is loaded
         // You can set initial values or add listeners here
@@ -69,17 +88,18 @@ public class pantallaPrincipalController {
     
     @FXML
     private void handleLogin(ActionEvent event) {
-        String username = userField.getText();
-        String password = passField.getText();
 
+    	this.username = userField.getText();
+        this.password = passField.getText();
+        
         System.out.println("Login pressed: " + username + " / " + password);
 
         // Basic check (just for demo, replace with real login logic)
         if (!username.isEmpty() && !password.isEmpty()) {
            
-        	/*String url = "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2";*/
-            String url = "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
-          /*  
+        	String url = "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2";
+           /* String url = "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";*/
+           
             try {
                 Connection conn = DriverManager.getConnection(url, username, password);
                 System.out.println("✅ Conexión exitosa a Oracle!");
@@ -88,7 +108,7 @@ public class pantallaPrincipalController {
                 System.out.println("❌ Error al conectar:");
                 e.printStackTrace();
             }
-        	*/
+        	
         	try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/pantallaJuego.fxml"));
                 Parent pantallaJuegoRoot = loader.load();

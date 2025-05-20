@@ -136,6 +136,16 @@
                               <Font size="30.0" />
                            </font>
                         </Button>
+                        <Button fx:id="btnGuardar" layoutX="549.0" layoutY="104.0" mnemonicParsing="false" onAction="#handleSaveGame" text="Guardar">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnCargar" layoutX="417.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleLoadGame" text="cargar">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
