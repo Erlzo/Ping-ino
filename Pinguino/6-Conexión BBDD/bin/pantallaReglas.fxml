@@ -9,7 +9,7 @@
     <children>
         <VBox spacing="15" alignment="TOP_CENTER">
     		<padding>
-        		<Insets value="20"/>
+				<Insets top="20" right="20" bottom="20" left="20" />
     		</padding>
    	 		<Label text="🐧 Reglas del Juego 🧊" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
     		<Label fx:id="eventos" wrapText="true" style="-fx-font-size: 14px;" />

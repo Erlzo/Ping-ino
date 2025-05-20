@@ -248,11 +248,14 @@ public class pantallaJuegoController {
 			// Verificar las condiciones para las diferentes filas y columnas
 			// fila 0
 			if (row == 0 && col == 3) { // eventoAleatorio
+				GridPane.setRowIndex(P1, row);
+				GridPane.setColumnIndex(P1, col);
 				eventoAleatorio();
 				accionRealizada = true;
 				bucle = false;
 			} else if (row == 0 && col == 4) { // trineo
 				if (!moverDeTrineo) {
+					eventos.setText("Casilla de trineo. Nos movemos .");
 					row = 2;
 					col = 1;
 					p1Position = 11;
@@ -263,11 +266,16 @@ public class pantallaJuegoController {
 				} else {
 					bucle = false; // Termina el turno después de moverse
 				}
+			}else if(row == 0 && col == 1) {
+				eventos.setText("Casilla de agujero de hielo. No te mueves al ser el agujero de hielo mas bajo .");
+				accionRealizada = true;
+				bucle = false;
 			}
 
 			// fila 2
 			if (row == 2 && col == 1) { // trineo
 				if (!moverDeTrineo) {
+					eventos.setText("Casilla de trineo. Nos movemos .");
 					row = 5;
 					col = 4;
 					p1Position = 29;
@@ -279,6 +287,8 @@ public class pantallaJuegoController {
 					bucle = false; // Termina el turno después de moverse
 				}
 			} else if (row == 2 && col == 3) { // eventoAleatorio
+				GridPane.setRowIndex(P1, row);
+				GridPane.setColumnIndex(P1, col);
 				eventoAleatorio();
 				accionRealizada = true;
 				bucle = false;
@@ -286,6 +296,7 @@ public class pantallaJuegoController {
 
 			// fila 3
 			if (row == 3 && col == 0) { // agujeroHielo
+				eventos.setText("Casilla de agujero de hielo. Nos vamos hacia atras .");
 				row = 0;
 				col = 1;
 				p1Position = 1;
@@ -297,7 +308,7 @@ public class pantallaJuegoController {
 
 			// fila 4
 			if (row == 4 && col == 3) { // oso
-				if (inventario.getPeces() < 0) {
+				if (inventario.getPeces() < 1) {
 					eventos.setText("Casilla de oso. No tienes peces. Pal lobby.");
 				} else {
 
@@ -308,6 +319,11 @@ public class pantallaJuegoController {
 						// El jugador usó un pez, puedes dejarlo quedarse
 						inventario.setPeces(inventario.getPeces() - 1);
 						peces_t.setText("Peces: " + inventario.getPeces());
+						row = 4;
+						col = 3;
+						p1Position = 23;
+						GridPane.setRowIndex(P1, row);
+						GridPane.setColumnIndex(P1, col);
 
 					} else {
 						// Lo regresamos al inicio
@@ -324,11 +340,14 @@ public class pantallaJuegoController {
 
 			// fila 5
 			if (row == 5 && col == 1) { // eventoAleatorio
+				GridPane.setRowIndex(P1, row);
+				GridPane.setColumnIndex(P1, col);
 				eventoAleatorio();
 				accionRealizada = true;
 				bucle = false;
 			} else if (row == 5 && col == 4) { // trineo
 				if (!moverDeTrineo) {
+					eventos.setText("Casilla de trineo. Nos movemos .");
 					row = 8;
 					col = 0;
 					p1Position = 40;
@@ -343,6 +362,7 @@ public class pantallaJuegoController {
 
 			// fila 6
 			if (row == 6 && col == 2) { // agujeroHielo
+				eventos.setText("Casilla de agujero de hielo. Nos vamos hacia atras .");
 				row = 3;
 				col = 0;
 				p1Position = 15;
@@ -354,7 +374,7 @@ public class pantallaJuegoController {
 
 			// fila 7
 			if (row == 7 && col == 0) { // oso
-				if (inventario.getPeces() < 0) {
+				if (inventario.getPeces() < 1) {
 					eventos.setText("Casilla de oso. No tienes peces. Pal lobby.");
 				} else {
 
@@ -365,7 +385,11 @@ public class pantallaJuegoController {
 						// El jugador usó un pez, puedes dejarlo quedarse
 						inventario.setPeces(inventario.getPeces() - 1);
 						peces_t.setText("Peces: " + inventario.getPeces());
-
+						row = 7;
+						col = 0;
+						p1Position = 35;
+						GridPane.setRowIndex(P1, row);
+						GridPane.setColumnIndex(P1, col);
 					} else {
 						// Lo regresamos al inicio
 						row = 0;
@@ -383,12 +407,15 @@ public class pantallaJuegoController {
 			if (row == 8 && col == 0) { // trineo
 				// Acción de trineo
 				if (!moverDeTrineo) {
+					eventos.setText("Casilla de trineo. No te mueves al ser el trineo mas alto .");
 					accionRealizada = true;
 					moverDeTrineo = true; // Activa el movimiento al siguiente trineo
 				} else {
 					bucle = false; // Termina el turno después de moverse
 				}
 			} else if (row == 8 && col == 2) { // eventoAleatorio
+				GridPane.setRowIndex(P1, row);
+				GridPane.setColumnIndex(P1, col);
 				eventoAleatorio();
 				accionRealizada = true;
 				bucle = false;
@@ -397,7 +424,7 @@ public class pantallaJuegoController {
 			// fila 9
 			if (row == 9 && col == 2) { // oso
 
-				if (inventario.getPeces() < 0) {
+				if (inventario.getPeces() < 1) {
 					eventos.setText("Casilla de oso. No tienes peces. Pal lobby.");
 				} else {
 
@@ -408,7 +435,11 @@ public class pantallaJuegoController {
 						// El jugador usó un pez, puedes dejarlo quedarse
 						inventario.setPeces(inventario.getPeces() - 1);
 						peces_t.setText("Peces: " + inventario.getPeces());
-						
+						row = 9;
+						col = 2;
+						p1Position = 47;
+						GridPane.setRowIndex(P1, row);
+						GridPane.setColumnIndex(P1, col);
 					} else {
 						// Lo regresamos al inicio
 						row = 0;
@@ -421,6 +452,7 @@ public class pantallaJuegoController {
 					bucle = false;
 				}
 			} else if (row == 9 && col == 3) { // agujeroHielo
+				eventos.setText("Casilla de agujero de hielo. Nos vamos hacia atras .");
 				row = 6;
 				col = 2;
 				p1Position = 32;
