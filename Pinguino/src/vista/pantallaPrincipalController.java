@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import modelo.Jugador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -90,7 +91,10 @@ public class pantallaPrincipalController {
     private void handleLogin(ActionEvent event) {
 
     	this.username = userField.getText();
-        this.password = passField.getText();
+    	this.password = passField.getText();
+    	
+    	Jugador.username = this.username;
+    	Jugador.password = this.password;
         
         System.out.println("Login pressed: " + username + " / " + password);
 

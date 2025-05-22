@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Inventario;
+import modelo.Jugador;
 import vista.pantallaPrincipalController;
 
 public class pantallaJuegoController {
@@ -108,10 +109,12 @@ public class pantallaJuegoController {
 	    int posiciones = p1Position;  // Ejemplo de estado de partida
 	    String estado = "";
 	    
-	    pantallaPrincipalController principal = new pantallaPrincipalController();
+	    int peces = inventario.getPeces();
+	    int dadosRapidos = inventario.getDadoRapido();
+	    int dadosLentos = inventario.getDadoLentos();
 	    
-	    String username = principal.getUsername();
-	    String password = principal.getPassword();
+	    String username = Jugador.username;
+	    String password = Jugador.password;
 	    
 		if (p1Position >= 50) {
 		     estado = "FINALIZADA"; // 5 columns * 10 rows = 50 cells (index 0 to 49)
@@ -138,15 +141,15 @@ public class pantallaJuegoController {
 	    
 	    String sqlParticipacion = String.format(
 	    	    "INSERT INTO PARTICIPACIÓN (IDPARTICIPACIÓN, POSICIONACTUAL, NUMPECES, NUMDADOLENTO, NUMDADORAPIDO, IDJUGADOR, IDPARTIDA) " +
-	    	    "VALUES (seq_idparticipacion.NEXTVAL, '%s', '%s', '%s', '%s', seq_idjugador.NEXTVAL, seq_idpartida.NEXTVAL)",
-	    	     posiciones, inventario.getPeces(), inventario.getDadoLentos(), inventario.getDadoRapido()
+	    	    "VALUES (seq_idparticipacion.NEXTVAL, '%s', '%s', '%s', '%s', seq_idjugador.CURRVAL, seq_idpartida.CURRVAL)",
+	    	     posiciones, peces, dadosRapidos, dadosLentos
 	    	);
 	    
 	    try {
 	        Connection con = bbdd.conectarBaseDatos();  // Te pedirá los datos de conexión por consola
 	        bbdd.insert(con, sqlPartida);                      // Ejecuta el insert
+	        bbdd.insert(con, sqlJugador);
 	        bbdd.insert(con, sqlParticipacion);                      // Ejecuta el insert
-	        bbdd.insert(con, sqlJugador);                      // Ejecuta el insert
 	        con.close();                                // Cierra la conexión
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -161,9 +164,12 @@ public class pantallaJuegoController {
 	    int numPartida = scanner.nextInt();  // Lee el número desde la consola
 
 	    String sql = "SELECT * FROM PARTIDA WHERE NUMPARTIDA = " + numPartida;
+	    String sqlJugador = "SELECT * FROM PARTICIPACIÓN WHERE NUMPARTIDA = " + numPartida;
+
 	    try {
 	        Connection con = bbdd.conectarBaseDatos();  // Te pedirá datos por consola
 	        ResultSet rs = bbdd.select(con, sql);
+	        ResultSet rsParticipacion = bbdd.select(con, sqlJugador);
 
 	        if (rs != null && rs.next()) {
 	            int idPartida = rs.getInt("IDPARTIDA");
@@ -171,7 +177,9 @@ public class pantallaJuegoController {
 	            Time hora = rs.getTime("HORA");
 	            p1Position = rs.getInt("POSICIONES");
 	            String estado = rs.getString("ESTADO");
-
+	            
+	            int peces = rsParticipacion.getInt("");
+	            
 	    		int row = p1Position / COLUMNS;
 	    		int col = p1Position % COLUMNS;
 				GridPane.setRowIndex(P1, row);
