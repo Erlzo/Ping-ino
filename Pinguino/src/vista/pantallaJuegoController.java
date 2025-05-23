@@ -160,11 +160,11 @@ public class pantallaJuegoController {
 	private void handleLoadGame(ActionEvent event) {
 	    Scanner scanner = new Scanner(System.in);
 
-	    System.out.print("🔎 Introduce el número de partida (NUMPARTIDA) que deseas cargar: ");
-	    int numPartida = scanner.nextInt();  // Lee el número desde la consola
+	    System.out.print("🔎 Introduce el id de partida (IDPARTIDA) que deseas cargar: ");
+	    int idPartida = scanner.nextInt();  // Lee el número desde la consola
 
-	    String sql = "SELECT * FROM PARTIDA WHERE NUMPARTIDA = " + numPartida;
-	    String sqlJugador = "SELECT * FROM PARTICIPACIÓN WHERE NUMPARTIDA = " + numPartida;
+	    String sql = "SELECT * FROM PARTIDA WHERE IDPARTIDA = " + idPartida;
+	    String sqlJugador = "SELECT * FROM PARTICIPACIÓN WHERE IDPARTIDA = " + idPartida;
 
 	    try {
 	        Connection con = bbdd.conectarBaseDatos();  // Te pedirá datos por consola
@@ -172,27 +172,32 @@ public class pantallaJuegoController {
 	        ResultSet rsParticipacion = bbdd.select(con, sqlJugador);
 
 	        if (rs != null && rs.next()) {
-	            int idPartida = rs.getInt("IDPARTIDA");
 	            Date fecha = rs.getDate("FECHA");
 	            Time hora = rs.getTime("HORA");
 	            p1Position = rs.getInt("POSICIONES");
 	            String estado = rs.getString("ESTADO");
 	            
-	            int peces = rsParticipacion.getInt("");
-	            
+	            if (rsParticipacion != null && rsParticipacion.next()) {
+	                int peces = rsParticipacion.getInt("NUMPECES");
+	                int dadosRapidos = rsParticipacion.getInt("NUMDADORAPIDO");
+	                int dadosLentos = rsParticipacion.getInt("NUMDADOLENTO");
+
+	                inventario.setPeces(peces);
+	                inventario.setDadoRapido(dadosRapidos);
+	                inventario.setDadoLentos(dadosLentos);
+
+					peces_t.setText("Peces: " + inventario.getPeces());
+	                rapido_t.setText("Dado rápido: " + inventario.getDadoRapido());
+					lento_t.setText("Dado lento: " + inventario.getDadoLentos());
+
+	            } else {
+	                System.out.println("⚠️ No se encontró participación para la partida.");
+	            }
+
 	    		int row = p1Position / COLUMNS;
 	    		int col = p1Position % COLUMNS;
 				GridPane.setRowIndex(P1, row);
 				GridPane.setColumnIndex(P1, col);
-				
-	            // Aquí haces lo que necesites con los datos cargados
-	            System.out.println("✅ Partida cargada:");
-	            System.out.println("ID: " + idPartida);
-	            System.out.println("Núm: " + numPartida);
-	            System.out.println("Fecha: " + fecha);
-	            System.out.println("Hora: " + hora);
-	            System.out.println("Posiciones: " + p1Position);
-	            System.out.println("Estado: " + estado);
 
 	            // TODO: Actualiza tu lógica del juego con esta información
 
@@ -316,7 +321,24 @@ public class pantallaJuegoController {
 	    }
 	}
 
+	@FXML
+	private void mostrarMenu(ActionEvent event) {
+		  try {
+		        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pantallaMenu.fxml"));
+		        Parent root = fxmlLoader.load();
 
+		        Stage stage = new Stage();
+		        stage.setTitle("Menú");
+		        stage.setScene(new Scene(root));
+		        stage.initModality(Modality.APPLICATION_MODAL); // Bloquea interacción con la ventana principal
+		        stage.setResizable(false);
+		        stage.showAndWait();
+
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+	}
+	
 	@FXML
 	private void handleDado(ActionEvent event) {
 		Random rand = new Random();

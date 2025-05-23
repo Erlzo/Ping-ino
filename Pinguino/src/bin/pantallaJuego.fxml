@@ -146,6 +146,11 @@
                               <Font size="30.0" />
                            </font>
                         </Button>
+                        <Button fx:id="btnMenu" layoutX="160.0" layoutY="72.0" mnemonicParsing="false" onAction="#mostrarMenu" text="menu">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
